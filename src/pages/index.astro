@@ -1,11 +1,152 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/home.astro";
+import "../styles/global.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<section class="hero bg-[#0047CC] text-gray-50">
+		<div class="hero-content">
+			<div class="grid grid-cols-1 md:grid-cols-6 gap-2">
+				<div class="col-start-2 col-span-1">
+					<img
+						class="w-full h-full object-cover"
+						src="/home-img/img-placeholder.png"
+						alt="images"
+					/>
+				</div>
+
+				<div class="col-span-2 col-start-3 w-full flex justify-center">
+					<h2
+						class="pt-10 font-bold text-2xl md:text-2xl lg:text-6xl xl:text-7xl"
+					>
+						tempa studio
+					</h2>
+				</div>
+				<div class="col-span-1">
+					<img
+						class="w-full h-full object-cover"
+						src="/home-img/img-placeholder.png"
+						alt="images"
+					/>
+				</div>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+				<div class="col-span-1">
+					<img
+						class="w-full h-full object-cover"
+						src="/home-img/img-placeholder.png"
+						alt="images"
+					/>
+				</div>
+				<div class="col-span-3 w-full flex text-center justify-center">
+					<h2 class="text-6xl sm:text-4xl md:text-6xl pt-10">
+						We are e-commerce enabler for emerging to mid-market
+						brands
+					</h2>
+				</div>
+				<div class="col-span-1">
+					<img
+						class="w-full h-full object-cover"
+						src="/home-img/img-placeholder.png"
+						alt="images"
+					/>
+				</div>
+			</div>
+			<div class="w-full h-full grid grid-cols-1 md:grid-cols-6 gap-2">
+				<div
+					class="col-span-2 col-start-3 text-center justify-center items-center"
+				>
+					<h2>
+						Tempa is a consultancy collective combining design
+						consulting, creativity, technology, engineering and data
+						to help brand owners get better business result
+					</h2>
+				</div>
+			</div>
+			<div class="w-full h-full grid grid-cols-1 md:grid-cols-6 gap-2">
+				<div class="col-span-2 col-start-3 w-full flex justify-center">
+					<img
+						class="w-full h-full object-cover"
+						src="/stacks/astro.svg"
+						alt="images"
+					/>
+					<img
+						class="w-full h-full object-cover"
+						src="/stacks/vue.svg"
+						alt="images"
+					/>
+					<img
+						class="w-full h-full object-cover"
+						src="/stacks/shopify.svg"
+						alt="images"
+					/>
+					<img
+						class="w-full h-full object-cover"
+						src="/stacks/wordpress.svg"
+						alt="images"
+					/>
+					<img
+						class="w-full h-full object-cover"
+						src="/stacks/woo.svg"
+						alt="images"
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="grid grid-cols-1 md:grid-cols-6 gap-2">
+			<div class="col-start-3 col-span-3 pt-10">
+				<h3>Why Tempa Studio?</h3>
+				<h2 class="text-6xl sm:text-4xl md:text-6xl">
+					We make enterprise-grade e-commerce website accessible to
+					brands of all sizes.
+				</h2>
+				<div class="grid grid-cols-4 w-full">
+					<div class="col-span-3 pt-10">
+						<p>
+							You shouldn't need a Fortune 500 budget to have a
+							website that converts. We bring the craft, strategy
+							and tailor it for your brands.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-6 gap-2">
+			<div class="grid md:col-start-3 col-span-1">
+				<h4 class="pt-10 text-3xl">
+					We avoid overcomplexity. The right tech stack not the most
+					expensive one
+				</h4>
+				<p>
+					We recommend tools that fit your actual needs and budget. No
+					bloated platforms, no unnecessary complexity. Just the right
+					foundation to grow on.
+				</p>
+			</div>
+			<div class="grid col-span-1">
+				<h4 class="pt-10 text-3xl">
+					Design built around your brand — not a template
+				</h4>
+				<p>
+					Every website we build starts from your identity. No
+					shortcuts, no reused layouts. Yours should look like no one
+					else's.
+				</p>
+			</div>
+			<div class="grid col-span-1">
+				<h4 class="pt-10 text-3xl">
+					We help you to craft your product content strategy
+				</h4>
+				<p>
+					We shape how your products are described, positioned, and
+					presented, so customers feel compelled to buy.
+				</p>
+			</div>
+		</div>
+	</section>
 </Layout>
