@@ -151,75 +151,98 @@ import "../styles/home.css";
 		</div>
 	</section>
 	<!-- services section -->
-	<section>
+	<section class="min-h-[800px]">
 		<div class="grid grid-cols-1 md:grid-cols-8 gap-2 mt-20">
 			<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
 				<h4>SERVICES</h4>
 			</div>
 		</div>
-	</section>
-	<div class="grid grid-cols-1 md:grid-cols-8 gap-2 mt-20 h-[200px]">
-		<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
-			<button
-				class="tablinks text-2xl md:text-6xl text-left"
-				onmouseover="openCity(event, 'London')"
-				onmouseout="closeCity(event, 'London')">Creative</button
-			>
-		</div>
-		<div
-			id="London"
-			class="tabcontent cols-span-1 md:cols-span-3"
-			style="display: none;"
-		>
-			<h3>London</h3>
-			<span>User Interface (UI) Design</span>
-		</div>
-	</div>
-	<div class="grid grid-cols-1 md:grid-cols-8 gap-2 h-[200px]">
-		<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
-			<button
-				class="tablinks text-2xl md:text-6xl text-left"
-				onmouseover="openCity(event, 'Paris')"
-				onmouseout="closeCity(event, 'Paris')">Technology</button
-			>
-		</div>
-		<div
-			id="Paris"
-			class="tabcontent cols-span-1 md:cols-span-3"
-			style="display: none;"
-		>
-			<h3>Technology</h3>
-			<p>This is technology content</p>
-		</div>
-	</div>
-</Layout>
 
-<script is:inline>
-	function openCity(evt, cityName) {
-		var i, tabcontent, tablinks;
-		// Hide all tab content
-		tabcontent = document.getElementsByClassName("tabcontent");
-		for (i = 0; i < tabcontent.length; i++) {
-			tabcontent[i].style.display = "none";
+		<div class="grid grid-cols-1 md:grid-cols-8 gap-2 mt-8 h-[200px]">
+			<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
+				<button
+					class="tablinks text-2xl md:text-6xl text-left"
+					onmouseover="openCity(event, 'London')"
+					onmouseout="closeCity(event, 'London')">Creative</button
+				>
+			</div>
+			<div
+				id="London"
+				class="tabcontent cols-span-1 md:col-span-3 gap-4"
+				style="display: none;"
+			>
+				<h3 class="text-2xl">Design</h3>
+				<div class="flex flex-wrap gap-2 pt-4">
+					<span class="tablet">User Interface (UI) Design</span>
+					<span class="tablet">Creative & Art direction</span>
+					<span class="tablet">Branding & Identity</span>
+					<span class="tablet">Design System</span>
+					<span class="tablet">Animation & Interaction</span>
+					<span class="tablet">Packaging design</span>
+					<span class="tablet">3d production</span>
+				</div>
+			</div>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-8 gap-2 h-[200px]">
+			<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
+				<button
+					class="tablinks text-2xl md:text-6xl text-left"
+					onmouseover="openCity(event, 'Paris')"
+					onmouseout="closeCity(event, 'Paris')">Technology</button
+				>
+			</div>
+			<div
+				id="Paris"
+				class="tabcontent cols-span-1 md:col-span-3 gap-4"
+				style="display: none;"
+			>
+				<div>
+					<h3 class="text-2xl">Frontend Development</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">E-commerce theme development</span>
+						<span class="tablet">Headless website development</span>
+						<span class="tablet">Shopify theme development</span>
+					</div>
+				</div>
+				<div class="mt-8">
+					<h3 class="text-2xl">Frontend Development</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">E-commerce theme development</span>
+						<span class="tablet">Headless website development</span>
+						<span class="tablet">Shopify theme development</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script is:inline>
+		function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			// Hide all tab content
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			// Remove "active" class from all buttons
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(
+					" active",
+					"",
+				);
+			}
+			// Show the specific tab content and mark button as active
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
 		}
-		// Remove "active" class from all buttons
-		tablinks = document.getElementsByClassName("tablinks");
-		for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(
+
+		function closeCity(evt, cityName) {
+			document.getElementById(cityName).style.display = "none";
+			evt.currentTarget.className = evt.currentTarget.className.replace(
 				" active",
 				"",
 			);
 		}
-		// Show the specific tab content and mark button as active
-		document.getElementById(cityName).style.display = "block";
-		evt.currentTarget.className += " active";
-	}
-
-	function closeCity(evt, cityName) {
-		document.getElementById(cityName).style.display = "none";
-		evt.currentTarget.className = evt.currentTarget.className.replace(
-			" active",
-			"",
-		);
-	}
-</script>
+	</script>
+</Layout>

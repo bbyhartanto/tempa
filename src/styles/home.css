@@ -1,1 +1,5 @@
 /* Home styles */
+.tablet {
+    padding: 5px 8px;
+    background-color: rgba(241, 241, 241, 0.787);
+}
