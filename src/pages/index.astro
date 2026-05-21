@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/home.astro";
 import "../styles/global.css";
+import "../styles/home.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -99,11 +100,11 @@ import "../styles/global.css";
 	</section>
 	<section>
 		<div class="grid grid-cols-1 md:grid-cols-6 gap-2">
-			<div class="col-start-3 col-span-3 pt-10">
+			<div class="col-start-3 col-span-3 pt-8">
 				<h3>Why Tempa Studio?</h3>
 				<h2 class="text-6xl sm:text-4xl md:text-6xl">
-					We make enterprise-grade e-commerce website accessible to
-					brands of all sizes.
+					We make enterprise-grade <br /> e-commerce website accessible
+					to brands of all sizes.
 				</h2>
 				<div class="grid grid-cols-4 w-full">
 					<div class="col-span-3 pt-10">
@@ -116,9 +117,9 @@ import "../styles/global.css";
 				</div>
 			</div>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-6 gap-2">
-			<div class="grid md:col-start-3 col-span-1">
-				<h4 class="pt-10 text-3xl">
+		<div class="grid grid-cols-1 md:grid-cols-6 gap-8">
+			<div class="grid md:col-start-3 col-span-1 gap-4">
+				<h4 class="pt-10 text-2xl">
 					We avoid overcomplexity. The right tech stack not the most
 					expensive one
 				</h4>
@@ -129,7 +130,7 @@ import "../styles/global.css";
 				</p>
 			</div>
 			<div class="grid col-span-1">
-				<h4 class="pt-10 text-3xl">
+				<h4 class="pt-10 text-2xl">
 					Design built around your brand — not a template
 				</h4>
 				<p>
@@ -139,7 +140,7 @@ import "../styles/global.css";
 				</p>
 			</div>
 			<div class="grid col-span-1">
-				<h4 class="pt-10 text-3xl">
+				<h4 class="pt-10 text-2xl">
 					We help you to craft your product content strategy
 				</h4>
 				<p>
@@ -149,4 +150,76 @@ import "../styles/global.css";
 			</div>
 		</div>
 	</section>
+	<!-- services section -->
+	<section>
+		<div class="grid grid-cols-1 md:grid-cols-8 gap-2 mt-20">
+			<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
+				<h4>SERVICES</h4>
+			</div>
+		</div>
+	</section>
+	<div class="grid grid-cols-1 md:grid-cols-8 gap-2 mt-20 h-[200px]">
+		<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
+			<button
+				class="tablinks text-2xl md:text-6xl text-left"
+				onmouseover="openCity(event, 'London')"
+				onmouseout="closeCity(event, 'London')">Creative</button
+			>
+		</div>
+		<div
+			id="London"
+			class="tabcontent cols-span-1 md:cols-span-3"
+			style="display: none;"
+		>
+			<h3>London</h3>
+			<span>User Interface (UI) Design</span>
+		</div>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-8 gap-2 h-[200px]">
+		<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
+			<button
+				class="tablinks text-2xl md:text-6xl text-left"
+				onmouseover="openCity(event, 'Paris')"
+				onmouseout="closeCity(event, 'Paris')">Technology</button
+			>
+		</div>
+		<div
+			id="Paris"
+			class="tabcontent cols-span-1 md:cols-span-3"
+			style="display: none;"
+		>
+			<h3>Technology</h3>
+			<p>This is technology content</p>
+		</div>
+	</div>
 </Layout>
+
+<script is:inline>
+	function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		// Hide all tab content
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		// Remove "active" class from all buttons
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(
+				" active",
+				"",
+			);
+		}
+		// Show the specific tab content and mark button as active
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+
+	function closeCity(evt, cityName) {
+		document.getElementById(cityName).style.display = "none";
+		evt.currentTarget.className = evt.currentTarget.className.replace(
+			" active",
+			"",
+		);
+	}
+</script>
