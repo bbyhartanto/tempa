@@ -19,26 +19,30 @@ import "../styles/home.css";
 					/>
 				</div>
 
-				<div class="col-span-2 col-start-3 w-full flex justify-center">
+				<div
+					class="col-span-2 col-start-3 w-full flex items-center justify-center"
+				>
 					<h2 class="pt-10 font-bold text-2xl">Tempa studio</h2>
 				</div>
 				<div class="col-span-1">
 					<img
-						class="w-full h-[300px] object-cover"
+						class="w-full h-[200px] object-cover"
 						src="/home-img/shirt.webp"
 						alt="images"
 					/>
 				</div>
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-5 gap-2">
-				<div class="col-span-1">
+				<div class="col-span-1 h-full items-end">
 					<img
-						class="w-full h-[300px] object-cover"
+						class="w-full h-[280px] object-cover"
 						src="/home-img/wem.webp"
 						alt="images"
 					/>
 				</div>
-				<div class="col-span-3 w-full flex text-center justify-center">
+				<div
+					class="col-span-3 w-full flex text-center justify-center items-center"
+				>
 					<h2 class="text-6xl sm:text-4xl md:text-6xl pt-10">
 						We are e-commerce enabler for emerging to mid-market
 						brands
@@ -62,8 +66,6 @@ import "../styles/home.css";
 						to help brand owners get better business result
 					</h2>
 				</div>
-			</div>
-			<div class="w-full h-full grid grid-cols-1 md:grid-cols-6 gap-2">
 				<div
 					class="col-span-2 col-start-3 w-full flex justify-center py-8"
 				>
@@ -117,7 +119,10 @@ import "../styles/home.css";
 			</div>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-8 gap-8">
-			<div class="grid md:col-start-2 md:col-span-2 gap-4">
+			<div
+				class="grid md:col-start-2 md:col-span-2 gap-4 reveal"
+				style="animation-delay: 0.5s"
+			>
 				<h4 class="pt-10 text-2xl">
 					We avoid overcomplexity. The right tech stack not the most
 					expensive one
@@ -128,7 +133,7 @@ import "../styles/home.css";
 					foundation to grow on.
 				</p>
 			</div>
-			<div class="grid col-span-2">
+			<div class="grid col-span-2 reveal" style="animation-delay: 0.62s">
 				<h4 class="pt-10 text-2xl">
 					Design built around your brand — not a template
 				</h4>
@@ -138,7 +143,7 @@ import "../styles/home.css";
 					else's.
 				</p>
 			</div>
-			<div class="grid col-span-2">
+			<div class="grid col-span-2 reveal" style="animation-delay: 0.74s">
 				<h4 class="pt-10 text-2xl">
 					We help you to craft your product content strategy
 				</h4>
@@ -150,18 +155,19 @@ import "../styles/home.css";
 		</div>
 	</section>
 	<!-- services section -->
-	<section class="min-h-[800px] flex flex-col justify-center">
-		<div class="grid grid-cols-1 md:grid-cols-8 gap-2 mt-20">
+	<section class="min-h-screen flex flex-col justify-center">
+		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-20">
 			<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
 				<h4>SERVICES</h4>
 			</div>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-8 gap-2 mt-8 h-[100px]">
-			<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
+		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-8 h-[100px]">
+			<div class="tab cols-span-1 md:col-span-3 md:col-start-2">
 				<button
-					class="tablinks text-2xl md:text-6xl text-left"
-					onmouseover="openCity(event, 'London')"
+					class="tablinks text-2xl md:text-8xl text-left"
+					style="animation-delay: 0.5s"
+					onmouseover="openContent(event, 'London')"
 					onmouseout="closeCity(event, 'London')">Creative</button
 				>
 			</div>
@@ -170,23 +176,70 @@ import "../styles/home.css";
 				class="tabcontent cols-span-1 md:col-span-3 gap-4"
 				style="display: none;"
 			>
-				<h3 class="text-2xl">Design</h3>
-				<div class="flex flex-wrap gap-2 pt-4">
-					<span class="tablet">User Interface (UI) Design</span>
-					<span class="tablet">Creative & Art direction</span>
-					<span class="tablet">Branding & Identity</span>
-					<span class="tablet">Design System</span>
-					<span class="tablet">Animation & Interaction</span>
-					<span class="tablet">Packaging design</span>
-					<span class="tablet">3d production</span>
+				<div>
+					<h3 class="text-2xl">Branding</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">Graphic design assets</span>
+						<span class="tablet">Creative & Art direction</span>
+						<span class="tablet">Branding & Identity</span>
+						<span class="tablet">Animation & Interaction</span>
+						<span class="tablet">Packaging design</span>
+						<span class="tablet">3d production</span>
+						<span class="tablet">Video production</span>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-8 gap-2 h-[200px]">
-			<div class="tab cols-span-1 md:col-span-2 md:col-start-2">
+		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 h-[100px] mt-8">
+			<div class="tab cols-span-1 md:col-span-3 md:col-start-2">
 				<button
-					class="tablinks text-2xl md:text-6xl text-left"
-					onmouseover="openCity(event, 'Paris')"
+					class="tablinks text-2xl md:text-8xl text-left"
+					style="animation-delay: 0.62s"
+					onmouseover="openContent(event, 'Design')"
+					onmouseout="closeCity(event, 'Design')">UI/UX</button
+				>
+			</div>
+			<div
+				id="Design"
+				class="tabcontent cols-span-1 md:col-span-3 gap-4"
+				style="display: none;"
+			>
+				<div>
+					<h3 class="text-2xl">UI Design</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet"
+							>UI design consultation & Audit</span
+						>
+						<span class="tablet">User Interface (UI) Design</span>
+						<span class="tablet">Creative & Art direction</span>
+						<span class="tablet">Branding & Identity</span>
+						<span class="tablet">Design System</span>
+						<span class="tablet">Animation & Interaction</span>
+						<span class="tablet">Packaging design</span>
+						<span class="tablet">3d production</span>
+						<span class="tablet">Email design</span>
+					</div>
+				</div>
+				<div class="mt-8">
+					<h3 class="text-2xl">UX</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">UX Audit & Strategy</span>
+						<span class="tablet">User Research</span>
+						<span class="tablet">Information Architecture</span>
+						<span class="tablet">Interaction Design</span>
+						<span class="tablet">Prototyping</span>
+						<span class="tablet">User Testing</span>
+						<span class="tablet">Wireframing</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-10 mt-8 gap-2 h-[200px]">
+			<div class="tab cols-span-1 md:col-span-3 md:col-start-2">
+				<button
+					class="tablinks text-2xl md:text-8xl text-left"
+					style="animation-delay: 0.74s"
+					onmouseover="openContent(event, 'Paris')"
 					onmouseout="closeCity(event, 'Paris')">Technology</button
 				>
 			</div>
@@ -201,38 +254,71 @@ import "../styles/home.css";
 						<span class="tablet">E-commerce theme development</span>
 						<span class="tablet">Headless website development</span>
 						<span class="tablet">Shopify theme development</span>
+						<span class="tablet">Landing page development</span>
+						<span class="tablet">WordPress development</span>
 					</div>
 				</div>
 				<div class="mt-8">
-					<h3 class="text-2xl">Frontend Development</h3>
+					<h3 class="text-2xl">Backend Development</h3>
 					<div class="flex flex-wrap gap-2 pt-4">
-						<span class="tablet">E-commerce theme development</span>
-						<span class="tablet">Headless website development</span>
-						<span class="tablet">Shopify theme development</span>
+						<span class="tablet">ERP customization</span>
+						<span class="tablet">Custom mobile app development</span
+						>
+						<span class="tablet">Custom web app development</span>
+						<span class="tablet">API Integration</span>
+						<span class="tablet">Data Migration</span>
+						<span class="tablet">Managed IT services</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!-- Footer -->
+	<section
+		class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-20 min-h-[30vh] bg-[#0a0d25] text-white"
+	>
+		<div class="cols-span-1 flex items-center md:col-span-2 md:col-start-2">
+			<h2 class="text-4xl md:text-4xl">Ready to start something new?</h2>
+		</div>
+		<div
+			class="cols-span-1 md:col-span-2 md:col-start-9 flex items-center"
+			style="animation-delay: 1s"
+		>
+			<div class="px-4 py-2 bg-[#ffffff]">
+				<h3 class="text-2xl text-black">Build with us</h3>
+			</div>
+		</div>
+	</section>
 
 	<script is:inline>
-		function openCity(evt, cityName) {
+		function openContent(evt, cityName) {
 			var i, tabcontent, tablinks;
 			// Hide all tab content
 			tabcontent = document.getElementsByClassName("tabcontent");
 			for (i = 0; i < tabcontent.length; i++) {
 				tabcontent[i].style.display = "none";
 			}
-			// Remove "active" class from all buttons
+			// Remove "active" class and add/remove "muted" on all buttons
 			tablinks = document.getElementsByClassName("tablinks");
 			for (i = 0; i < tablinks.length; i++) {
 				tablinks[i].className = tablinks[i].className.replace(
 					" active",
-					"",
+					""
 				);
+				if (tablinks[i] !== evt.currentTarget) {
+					if (!tablinks[i].classList.contains("muted")) {
+						tablinks[i].classList.add("muted");
+					}
+				} else {
+					tablinks[i].classList.remove("muted");
+				}
 			}
 			// Show the specific tab content and mark button as active
-			document.getElementById(cityName).style.display = "block";
+			var el = document.getElementById(cityName);
+			el.style.animation = "none";
+			el.style.display = "block";
+			el.offsetHeight; // force reflow to restart animation
+			el.style.animation = "";
 			evt.currentTarget.className += " active";
 		}
 
@@ -240,8 +326,31 @@ import "../styles/home.css";
 			document.getElementById(cityName).style.display = "none";
 			evt.currentTarget.className = evt.currentTarget.className.replace(
 				" active",
-				"",
+				""
 			);
+			// Remove muted from all buttons when hover ends
+			var tablinks = document.getElementsByClassName("tablinks");
+			for (var i = 0; i < tablinks.length; i++) {
+				tablinks[i].classList.remove("muted");
+			}
 		}
+
+		// Trigger .reveal animation every time element enters viewport
+		const revealObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("in-view");
+					} else {
+						entry.target.classList.remove("in-view"); // reset so animation replays on re-entry
+					}
+				});
+			},
+			{ threshold: 0.15 }
+		);
+
+		document.querySelectorAll(".reveal, .tablinks").forEach((el) => {
+			revealObserver.observe(el);
+		});
 	</script>
 </Layout>
