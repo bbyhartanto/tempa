@@ -1,9 +1,10 @@
 @import "tailwindcss";
+@import "./general-sans.css";
 
 @theme {
-	--font-sans: "Mozilla Text", sans-serif;
+	--font-sans: "GeneralSans-Regular", sans-serif;
 }
 
 * {
-	font-family: "Mozilla Text", sans-serif;
+	font-family: "GeneralSans-Regular", sans-serif;
 }
