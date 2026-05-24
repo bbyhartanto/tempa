@@ -43,3 +43,23 @@
 .reveal.in-view {
     animation: slideUpReveal 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
+
+.text-h2 {
+    --base-size: 48;
+    /* Your desktop size here */
+    --min-size: 24;
+    /* Your minimum mobile size here */
+    font-size: max(calc(var(--min-size) * 1px), calc((var(--base-size) / 1440) * 100vw));
+}
+
+.li-migrate {
+    border-bottom: 1px dashed var(--color-neutral-300);
+    padding: 4px 4px;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.li-migrate:hover {
+    background-color: black;
+    color: white;
+    padding-left: 14px;
+}
