@@ -2,40 +2,48 @@
 ---
 
 <section
-    class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-20 min-h-[30vh] py-10 bg-[#0a0d25] text-white"
+    class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-20 min-h-[30vh] bg-[#0a0d25] text-white p-8"
 >
-    <div class="col-span-1 flex items-start gap-4 md:col-span-3 md:col-start-2">
-        <img
-            src="/brand/tempa-logo-white.svg"
-            class="w-[20%] h-full"
-            alt="tempa logo"
-        />
-        <h2 class="text-4xl md:text-3xl mt-1">Tempa.dev</h2>
+    <div class="col-span-1 flex gap-4 md:col-span-3 md:col-start-2">
+        <div class="self-start items-end flex">
+            <img
+                src="/brand/tempa-logo-white.svg"
+                class="w-[18%]"
+                alt="tempa logo"
+            />
+            <h2 class="text-4xl md:text-3xl mb-1">Tempa.dev</h2>
+        </div>
     </div>
     <div class="col-sp-1 flex flex-col md:col-span-2">
-        <h4 class="prompt-medium text-xl">E-commerce services</h4>
+        <h4 class="text-xl">E-commerce services</h4>
         <ul class="list-none list-inside">
-            <li class="li-footer prompt-light">E-commerce development</li>
-            <li class="li-footer prompt-light">Migrate from Tokopedia</li>
-            <li class="li-footer prompt-light">Migrate from Shopee</li>
-            <li class="li-footer prompt-light">Migrate from tiktokshop</li>
+            <li class="li-footer">E-commerce development</li>
+            <li class="li-footer">Migrate from Tokopedia</li>
+            <li class="li-footer">Migrate from Shopee</li>
+            <li class="li-footer">Migrate from tiktokshop</li>
         </ul>
     </div>
     <div class="col-sp-1 flex flex-col md:col-span-2">
-        <h4 class="prompt-medium text-xl">E-commerce services</h4>
+        <h4 class="text-xl">Core services</h4>
         <ul class="list-none list-inside">
-            <li class="li-footer prompt-light">E-commerce development</li>
-            <li class="li-footer prompt-light">Migrate from Tokopedia</li>
-            <li class="li-footer prompt-light">Migrate from Shopee</li>
-            <li class="li-footer prompt-light">Migrate from tiktokshop</li>
+            <li class="li-footer">UI design</li>
+            <li class="li-footer">UX Design</li>
+            <li class="li-footer">Frontend Development</li>
+            <li class="li-footer">Backend Development</li>
         </ul>
     </div>
     <div
-        class="col-span-1 md:col-span-2 md:col-start-9 flex items-center"
+        class="col-span-1 flex flex-col md:col-span-2 md:col-start-9"
         style="animation-delay: 1s"
     >
-        <div class="px-4 py-2 bg-[#ffffff]">
-            <h3 class="text-2xl text-black">hello@tempa.dev</h3>
+        <h4 class="text-xl">Contact</h4>
+        <div
+            class="px-4 py-2 bg-[#ffffff] hover:bg-gray-100 transition-colors w-fit mt-2"
+        >
+            <a
+                href="mailto:hello@tempa.dev"
+                class="text-black block w-full h-full">hello@tempa.dev</a
+            >
         </div>
     </div>
 </section>
