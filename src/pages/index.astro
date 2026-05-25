@@ -56,7 +56,7 @@ import SectionFooter from "../components/SectionFooter.astro";
 
 		<!-- Mobile Hamburger -->
 		<button
-			class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
+			class="md:hidden flex flex-col bg-black/40 backdrop-blur-md p-2 rounded-sm justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
 		>
 			<span class="w-6 h-[2px] bg-black block"></span>
 			<span class="w-6 h-[2px] bg-black block"></span>
@@ -81,11 +81,9 @@ import SectionFooter from "../components/SectionFooter.astro";
 		</div>
 
 		<!-- Foreground Content -->
-		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8">
-			<div
-				class="col-span-1 md:col-start-1 pointer-events-auto aspect-square overflow-hidden flex items-center justify-end"
-			>
-			</div>
+		<div
+			class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-center mt-[30vh] md:mt-0"
+		>
 			<div
 				class="col-span-1 md:col-span-1 md:col-start-4 pointer-events-auto aspect-square overflow-hidden"
 			>
@@ -401,6 +399,8 @@ import SectionFooter from "../components/SectionFooter.astro";
 			});
 		});
 
+		let boundaryHitTime = 0;
+
 		Observer.create({
 			type: "wheel,touch,pointer",
 			wheelSpeed: -1,
@@ -416,10 +416,22 @@ import SectionFooter from "../components/SectionFooter.astro";
 							scrollable.scrollTop + scrollable.clientHeight
 						) < scrollable.scrollHeight
 					) {
+						boundaryHitTime = 0;
 						return; // Still scrolling natively inside
 					}
+					// Reached bottom - require a fresh scroll intention
+					if (boundaryHitTime === 0) {
+						boundaryHitTime = Date.now();
+						return;
+					}
+					if (Date.now() - boundaryHitTime < 600) {
+						return; // Ignore residual momentum
+					}
 				}
-				if (!animating) gotoSection(currentIndex + 1, 1);
+				if (!animating) {
+					gotoSection(currentIndex + 1, 1);
+					boundaryHitTime = 0;
+				}
 			},
 			onDown: (self) => {
 				// Scrolling Up (movement Down)
@@ -427,10 +439,22 @@ import SectionFooter from "../components/SectionFooter.astro";
 				if (scrollable) {
 					// Check if we reached the top of the scrollable container
 					if (scrollable.scrollTop > 0) {
+						boundaryHitTime = 0;
 						return; // Still scrolling natively inside
 					}
+					// Reached top - require a fresh scroll intention
+					if (boundaryHitTime === 0) {
+						boundaryHitTime = Date.now();
+						return;
+					}
+					if (Date.now() - boundaryHitTime < 600) {
+						return; // Ignore residual momentum
+					}
 				}
-				if (!animating) gotoSection(currentIndex - 1, -1);
+				if (!animating) {
+					gotoSection(currentIndex - 1, -1);
+					boundaryHitTime = 0;
+				}
 			},
 		});
 
