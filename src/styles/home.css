@@ -45,7 +45,7 @@
 }
 
 .text-h2 {
-    --base-size: 48;
+    --base-size: 72;
     /* Your desktop size here */
     --min-size: 24;
     /* Your minimum mobile size here */
