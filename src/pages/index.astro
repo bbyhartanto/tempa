@@ -11,7 +11,60 @@ import SectionFooter from "../components/SectionFooter.astro";
 ---
 
 <Layout>
-	<section class="relative h-screen flex flex-col items-center">
+	<header
+		class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 md:px-8 py-4"
+	>
+		<div
+			class="relative flex items-center bg-black/40 backdrop-blur-md border border-white/10 p-2 px-4 rounded-sm text-white"
+		>
+			<img
+				src="/home-img/world-a.svg"
+				class="relative z-0 w-[5cqw] md:w-[2cqw] pr-4"
+				alt="globe"
+			/>
+			<p class="w-full text-center">Indonesia</p>
+		</div>
+
+		<!-- Desktop Menu -->
+		<nav
+			class="hidden md:flex items-center gap-4 bg-black/40 backdrop-blur-md p-2 px-2 rounded-sm text-white"
+		>
+			<a
+				href="#"
+				data-target-index="1"
+				class="nav-link text-sm hover:text-gray-600 transition-colors px-2"
+				>Service</a
+			>
+			<a
+				href="#"
+				data-target-index="2"
+				class="nav-link text-sm hover:text-gray-600 transition-colors px-2"
+				>Work</a
+			>
+			<a
+				href="#"
+				class="text-sm hover:text-gray-600 transition-colors px-2"
+				>About</a
+			>
+			<a
+				href="#"
+				data-target-index="3"
+				class="nav-link text-sm hover:text-gray-600 transition-colors bg-black p-2 rounded-sm"
+				>Contact</a
+			>
+		</nav>
+
+		<!-- Mobile Hamburger -->
+		<button
+			class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
+		>
+			<span class="w-6 h-[2px] bg-black block"></span>
+			<span class="w-6 h-[2px] bg-black block"></span>
+			<span class="w-6 h-[2px] bg-black block"></span>
+		</button>
+	</header>
+
+	<section class="relative h-screen flex flex-col">
 		<!-- Background Grid -->
 		<div
 			class="absolute inset-0 grid grid-cols-4 md:grid-cols-8 gap-[1px] bg-gray-200 z-0 pointer-events-none"
@@ -28,8 +81,11 @@ import SectionFooter from "../components/SectionFooter.astro";
 		</div>
 
 		<!-- Foreground Content -->
-		<div class="relative z-10 flex flex-col justify-center h-full">
-			<div class="grid grid-cols-4 md:grid-cols-8">
+		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8">
+			<div
+				class="col-span-1 md:col-start-1 pointer-events-auto aspect-square overflow-hidden flex items-center justify-end"
+			>
+			</div>
 			<div
 				class="col-span-1 md:col-span-1 md:col-start-4 pointer-events-auto aspect-square overflow-hidden"
 			>
@@ -59,9 +115,9 @@ import SectionFooter from "../components/SectionFooter.astro";
 					class="w-full h-full object-cover"
 				/>
 			</div>
-			</div>
-			<!-- row 2 -->
-			<div class="grid grid-cols-4 md:grid-cols-8 items-center">
+		</div>
+		<!-- row 2 -->
+		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-center">
 			<div
 				class="col-span-4 md:col-span-4 md:col-start-2 pointer-events-auto flex items-center justify-between @container"
 			>
@@ -119,9 +175,9 @@ import SectionFooter from "../components/SectionFooter.astro";
 					Studio
 				</h3>
 			</div>
-			</div>
-			<!-- row 3 -->
-			<div class="grid grid-cols-4 md:grid-cols-8 items-start">
+		</div>
+		<!-- row 3 -->
+		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-start">
 			<div
 				class="col-span-1 col-start-2 md:col-span-1 md:col-start-5 pointer-events-auto aspect-square overflow-hidden"
 			>
@@ -137,7 +193,6 @@ import SectionFooter from "../components/SectionFooter.astro";
 					Custom website and e-commerce optimized for conversion and
 					performance.
 				</p>
-			</div>
 			</div>
 		</div>
 	</section>
@@ -290,16 +345,20 @@ import SectionFooter from "../components/SectionFooter.astro";
 			gsap.set(nextSection, { visibility: "visible", zIndex: 10 });
 			gsap.set(currentSection, { zIndex: 1 });
 
-			// Reset the incoming section's elements so they are hidden during parallax
+			// Reset the incoming section's elements so they are hidden during parallax ini untuk ganti kecepatan slide
 			resetRevealAnimations(nextSection, index === 0);
 
 			let tl = gsap.timeline({
-				defaults: { duration: 1.2, ease: "power3.inOut" },
+				defaults: { duration: 0.8, ease: "power3.inOut" },
 				onComplete: () => {
 					gsap.set(currentSection, { visibility: "hidden" });
-					animating = false;
 					if (index === 0) playHeroAnimation();
 					playRevealAnimations(nextSection);
+
+					// Add a cooldown to prevent trackpad momentum from jumping multiple sections
+					setTimeout(() => {
+						animating = false;
+					}, 500);
 				},
 			});
 
@@ -321,6 +380,26 @@ import SectionFooter from "../components/SectionFooter.astro";
 
 			currentIndex = index;
 		}
+
+		// Handle Header Navigation Links
+		document.querySelectorAll(".nav-link").forEach((link) => {
+			link.addEventListener("click", (e) => {
+				e.preventDefault();
+				const targetIndex = parseInt(
+					link.getAttribute("data-target-index")
+				);
+				if (
+					!isNaN(targetIndex) &&
+					targetIndex !== currentIndex &&
+					!animating &&
+					targetIndex >= 0 &&
+					targetIndex < sections.length
+				) {
+					const direction = targetIndex > currentIndex ? 1 : -1;
+					gotoSection(targetIndex, direction);
+				}
+			});
+		});
 
 		Observer.create({
 			type: "wheel,touch,pointer",
