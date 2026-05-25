@@ -1,116 +1,144 @@
 ---
 ---
 
-<section class="min-h-screen flex flex-col justify-center px-8">
-	<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-20">
-		<div class="tab col-span-1 md:col-span-2 md:col-start-2">
-			<h4>Core services</h4>
-		</div>
+<section class="relative">
+	<!-- Background Grid -->
+	<div
+		class="absolute inset-0 grid grid-cols-4 md:grid-cols-8 gap-[1px] bg-gray-200 z-0 pointer-events-none"
+	>
+		<div class="bg-[#ffffff]"></div>
+		<div class="bg-[#ffffff]"></div>
+		<div class="bg-[#ffffff]"></div>
+		<div class="bg-[#ffffff]"></div>
+		<!-- md hidden -->
+		<div class="hidden md:block bg-[#ffffff]"></div>
+		<div class="hidden md:block bg-[#ffffff]"></div>
+		<div class="hidden md:block bg-[#ffffff]"></div>
+		<div class="hidden md:block bg-[#ffffff]"></div>
 	</div>
+	<div class="relative z-10 min-h-screen flex flex-col justify-center px-8">
+		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-20">
+			<div class="tab col-span-1 md:col-span-2 md:col-start-2">
+				<h4>Core services</h4>
+			</div>
+		</div>
 
-	<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-8 h-[100px]">
-		<div class="tab col-span-1 md:col-span-3 md:col-start-2 font-medium">
-			<button
-				class="tablinks text-h2 text-left"
-				style="animation-delay: 0.5s"
-				onmouseover="openContent(event, 'London')"
-				onmouseout="closeCity(event, 'London')">Creative</button
+		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-8 h-[100px]">
+			<div
+				class="tab col-span-1 md:col-span-3 md:col-start-2 font-medium"
 			>
-		</div>
-		<div
-			id="London"
-			class="tabcontent col-span-1 md:col-span-3 gap-4"
-			style="display: none;"
-		>
-			<div>
-				<h3 class="text-2xl">Branding</h3>
-				<div class="flex flex-wrap gap-2 pt-4">
-					<span class="tablet">Graphic design assets</span>
-					<span class="tablet">Creative & Art direction</span>
-					<span class="tablet">Branding & Identity</span>
-					<span class="tablet">Animation & Interaction</span>
-					<span class="tablet">Packaging design</span>
-					<span class="tablet">3d production</span>
-					<span class="tablet">Video production</span>
-				</div>
+				<a
+					href="#"
+					class="tablinks text-6xl md:text-h2 text-left block"
+					style="animation-delay: 0.5s"
+					onmouseover="openContent(event, 'London')"
+					onmouseout="closeCity(event, 'London')">Creative</a
+				>
 			</div>
-		</div>
-	</div>
-	<div class="grid grid-cols-1 md:grid-cols-10 gap-2 h-[100px] mt-8">
-		<div class="tab col-span-1 md:col-span-3 md:col-start-2 font-medium">
-			<button
-				class="tablinks text-h2 text-left"
-				style="animation-delay: 0.62s"
-				onmouseover="openContent(event, 'Design')"
-				onmouseout="closeCity(event, 'Design')">UI/UX</button
+			<div
+				id="London"
+				class="tabcontent col-span-1 md:col-span-3 gap-4"
+				style="display: none;"
 			>
-		</div>
-		<div
-			id="Design"
-			class="tabcontent col-span-1 md:col-span-3 gap-4"
-			style="display: none;"
-		>
-			<div>
-				<h3 class="text-2xl">UI Design</h3>
-				<div class="flex flex-wrap gap-2 pt-4">
-					<span class="tablet">UI design consultation & Audit</span>
-					<span class="tablet">User Interface (UI) Design</span>
-					<span class="tablet">Creative & Art direction</span>
-					<span class="tablet">Branding & Identity</span>
-					<span class="tablet">Design System</span>
-					<span class="tablet">Animation & Interaction</span>
-					<span class="tablet">Packaging design</span>
-					<span class="tablet">3d production</span>
-					<span class="tablet">Email design</span>
-				</div>
-			</div>
-			<div class="mt-8">
-				<h3 class="text-2xl">UX</h3>
-				<div class="flex flex-wrap gap-2 pt-4">
-					<span class="tablet">UX Audit & Strategy</span>
-					<span class="tablet">User Research</span>
-					<span class="tablet">Information Architecture</span>
-					<span class="tablet">Interaction Design</span>
-					<span class="tablet">Prototyping</span>
-					<span class="tablet">User Testing</span>
-					<span class="tablet">Wireframing</span>
+				<div>
+					<h3 class="text-2xl">Branding</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">Graphic design assets</span>
+						<span class="tablet">Creative & Art direction</span>
+						<span class="tablet">Branding & Identity</span>
+						<span class="tablet">Animation & Interaction</span>
+						<span class="tablet">Packaging design</span>
+						<span class="tablet">3d production</span>
+						<span class="tablet">Video production</span>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="grid grid-cols-1 md:grid-cols-10 mt-8 gap-2 h-[200px]">
-		<div class="tab col-span-1 md:col-span-3 md:col-start-2 font-medium">
-			<button
-				class="tablinks text-h2 text-left"
-				style="animation-delay: 0.74s"
-				onmouseover="openContent(event, 'Paris')"
-				onmouseout="closeCity(event, 'Paris')">Technology</button
+		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-8 h-[100px]">
+			<div
+				class="tab col-span-1 md:col-span-3 md:col-start-2 font-medium"
 			>
-		</div>
-		<div
-			id="Paris"
-			class="tabcontent col-span-1 md:col-span-3 gap-4"
-			style="display: none;"
-		>
-			<div>
-				<h3 class="text-2xl">Frontend Development</h3>
-				<div class="flex flex-wrap gap-2 pt-4">
-					<span class="tablet">E-commerce theme development</span>
-					<span class="tablet">Headless website development</span>
-					<span class="tablet">Shopify theme development</span>
-					<span class="tablet">Landing page development</span>
-					<span class="tablet">WordPress development</span>
+				<a
+					href="#"
+					class="tablinks text-6xl md:text-h2 text-left block"
+					style="animation-delay: 0.62s"
+					onmouseover="openContent(event, 'Design')"
+					onmouseout="closeCity(event, 'Design')">UI/UX</a
+				>
+			</div>
+			<div
+				id="Design"
+				class="tabcontent col-span-1 md:col-span-3 gap-4"
+				style="display: none;"
+			>
+				<div>
+					<h3 class="text-2xl">UI Design</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet"
+							>UI design consultation & Audit</span
+						>
+						<span class="tablet">User Interface (UI) Design</span>
+						<span class="tablet">Creative & Art direction</span>
+						<span class="tablet">Branding & Identity</span>
+						<span class="tablet">Design System</span>
+						<span class="tablet">Animation & Interaction</span>
+						<span class="tablet">Packaging design</span>
+						<span class="tablet">3d production</span>
+						<span class="tablet">Email design</span>
+					</div>
+				</div>
+				<div class="mt-8">
+					<h3 class="text-2xl">UX</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">UX Audit & Strategy</span>
+						<span class="tablet">User Research</span>
+						<span class="tablet">Information Architecture</span>
+						<span class="tablet">Interaction Design</span>
+						<span class="tablet">Prototyping</span>
+						<span class="tablet">User Testing</span>
+						<span class="tablet">Wireframing</span>
+					</div>
 				</div>
 			</div>
-			<div class="mt-8">
-				<h3 class="text-2xl">Backend Development</h3>
-				<div class="flex flex-wrap gap-2 pt-4">
-					<span class="tablet">ERP customization</span>
-					<span class="tablet">Custom mobile app development</span>
-					<span class="tablet">Custom web app development</span>
-					<span class="tablet">API Integration</span>
-					<span class="tablet">Data Migration</span>
-					<span class="tablet">Managed IT services</span>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 mt-8 h-[200px]">
+			<div
+				class="tab col-span-1 md:col-span-3 md:col-start-2 font-medium"
+			>
+				<a
+					href="#"
+					class="tablinks text-6xl md:text-h2 text-left block"
+					style="animation-delay: 0.74s"
+					onmouseover="openContent(event, 'Paris')"
+					onmouseout="closeCity(event, 'Paris')">Technology</a
+				>
+			</div>
+			<div
+				id="Paris"
+				class="tabcontent col-span-1 md:col-span-3 gap-4"
+				style="display: none;"
+			>
+				<div>
+					<h3 class="text-2xl">Frontend Development</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">E-commerce theme development</span>
+						<span class="tablet">Headless website development</span>
+						<span class="tablet">Shopify theme development</span>
+						<span class="tablet">Landing page development</span>
+						<span class="tablet">WordPress development</span>
+					</div>
+				</div>
+				<div class="mt-8">
+					<h3 class="text-2xl">Backend Development</h3>
+					<div class="flex flex-wrap gap-2 pt-4">
+						<span class="tablet">ERP customization</span>
+						<span class="tablet">Custom mobile app development</span
+						>
+						<span class="tablet">Custom web app development</span>
+						<span class="tablet">API Integration</span>
+						<span class="tablet">Data Migration</span>
+						<span class="tablet">Managed IT services</span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -119,6 +147,7 @@
 
 <script is:inline>
 	function openContent(evt, cityName) {
+		if (window.innerWidth < 768) return;
 		var i, tabcontent, tablinks;
 		// Hide all tab content
 		tabcontent = document.getElementsByClassName("tabcontent");
@@ -150,6 +179,7 @@
 	}
 
 	function closeCity(evt, cityName) {
+		if (window.innerWidth < 768) return;
 		document.getElementById(cityName).style.display = "none";
 		evt.currentTarget.className = evt.currentTarget.className.replace(
 			" active",
