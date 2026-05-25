@@ -4,14 +4,14 @@ import "../styles/global.css";
 import "../styles/home.css";
 import SectionServices from "../components/SectionServices.astro";
 import SectionTechStack from "../components/SectionTechStack.astro";
-import SectionCoreServices from "../components/SectionCoreServices.astro";
+import SectionFooter from "../components/SectionFooter.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<section class="relative min-h-screen flex flex-col">
+	<section class="relative h-screen flex flex-col items-center">
 		<!-- Background Grid -->
 		<div
 			class="absolute inset-0 grid grid-cols-4 md:grid-cols-8 gap-[1px] bg-gray-200 z-0 pointer-events-none"
@@ -28,18 +28,10 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 		</div>
 
 		<!-- Foreground Content -->
-		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-end">
+		<div class="relative z-10 flex flex-col justify-center h-full">
+			<div class="grid grid-cols-4 md:grid-cols-8">
 			<div
-				class="hidden md:block col-span-1 md:col-span-2 md:col-start-2 p-4 pointer-events-auto"
-			>
-				<p>
-					Web studio specializing in UI/UX design and web development.
-					Custom website and e-commerce optimized for conversion and
-					performance.
-				</p>
-			</div>
-			<div
-				class="col-span-1 md:col-span-1 pointer-events-auto aspect-square overflow-hidden"
+				class="col-span-1 md:col-span-1 md:col-start-4 pointer-events-auto aspect-square overflow-hidden"
 			>
 				<img
 					src="/home-img/hat.webp"
@@ -52,7 +44,7 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 				class="col-span-1 md:col-span-1 md:col-start-6 pointer-events-auto aspect-square overflow-hidden"
 			>
 				<img
-					src="/home-img/hat.webp"
+					src="/home-img/shirt.webp"
 					alt="image hat online"
 					class="w-full h-full object-cover"
 				/>
@@ -62,49 +54,74 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 				class="col-span-1 md:col-span-1 pointer-events-auto aspect-square overflow-hidden"
 			>
 				<img
-					src="/home-img/hat.webp"
+					src="/home-img/wem.webp"
 					alt="image hat online"
 					class="w-full h-full object-cover"
 				/>
 			</div>
-		</div>
-		<!-- row 2 -->
-		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-end">
+			</div>
+			<!-- row 2 -->
+			<div class="grid grid-cols-4 md:grid-cols-8 items-center">
 			<div
-				class="col-span-1 md:col-span-3 md:col-start-2 p-4 pointer-events-auto @container"
+				class="col-span-4 md:col-span-4 md:col-start-2 pointer-events-auto flex items-center justify-between @container"
+			>
+				<h3
+					class="reveal panchang-medium uppercase text-[18cqw] md:text-[22cqw] leading-none relative z-20"
+				>
+					T
+				</h3>
+				<img
+					src="./home-img/Σ.svg"
+					class="h-[12cqw] md:h-[15cqw] pl-2 w-auto reveal"
+				/>
+				<h3
+					class="reveal panchang-medium uppercase pl-2 text-[18cqw] md:text-[22cqw] leading-none relative z-20"
+				>
+					M
+				</h3>
+				<h3
+					class="reveal panchang-medium uppercase text-[18cqw] md:text-[22cqw] leading-none relative z-20 -ml-2"
+				>
+					P
+				</h3>
+				<h3
+					class="reveal panchang-medium uppercase -ml-6 text-[18cqw] md:text-[22cqw] leading-none relative z-20"
+				>
+					A
+				</h3>
+			</div>
+			<div
+				class="hidden md:block col-span-1 md:col-span-2 md:col-start-2 p-4 pointer-events-auto text-xl"
+			>
+				<p>
+					Web studio specializing in UI/UX design and web development.
+					Custom website and e-commerce optimized for conversion and
+					performance.
+				</p>
+			</div>
+			<div
+				class="col-span-1 col-start-2 md:col-span-1 md:col-start-4 pointer-events-auto aspect-square overflow-hidden"
+			>
+				<img
+					src="/home-img/socks.webp"
+					alt="image hat online"
+					class="w-full h-full object-cover"
+				/>
+			</div>
+			<div
+				class="col-span-4 col-start-3 md:col-span-3 md:col-start-5 p-4 pointer-events-auto @container"
 			>
 				<!-- The text size uses Container Query units (cqw) to scale relative to the parent div's width -->
 				<!-- 25cqw means 25% of the container's width. You can adjust this number to fit perfectly -->
-				<p>Introducing</p>
 				<h3
-					class="panchang-medium uppercase text-[22cqw] md:text-[22cqw] leading-none whitespace-nowrap relative z-20"
+					class="reveal panchang-regular uppercase text-[18cqw] leading-none whitespace-nowrap"
 				>
 					Studio
 				</h3>
 			</div>
-			<div
-				class="col-span-1 md:col-span-1 md:col-start-5 pointer-events-auto aspect-square overflow-hidden"
-			>
-				<img
-					src="/home-img/hat.webp"
-					alt="image hat online"
-					class="w-full h-full object-cover"
-				/>
 			</div>
-		</div>
-		<!-- row 3 -->
-		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-end">
-			<div
-				class="col-span-4 md:col-span-6 md:col-start-2 p-4 pointer-events-auto @container"
-			>
-				<!-- The text size uses Container Query units (cqw) to scale relative to the parent div's width -->
-				<!-- 25cqw means 25% of the container's width. You can adjust this number to fit perfectly -->
-				<h3
-					class="panchang-medium uppercase text-[18cqw] leading-none whitespace-nowrap"
-				>
-					Tempa
-				</h3>
-			</div>
+			<!-- row 3 -->
+			<div class="grid grid-cols-4 md:grid-cols-8 items-start">
 			<div
 				class="col-span-1 col-start-2 md:col-span-1 md:col-start-5 pointer-events-auto aspect-square overflow-hidden"
 			>
@@ -121,49 +138,225 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 					performance.
 				</p>
 			</div>
-		</div>
-	</section>
-	<SectionServices />
-	<SectionCoreServices />
-	<SectionTechStack />
-	<!-- call to action -->
-	<section class="min-h-[800px] flex flex-col justify-center">
-		<div class="grid grid-cols-1 md:grid-cols-10 gap-2 py-10">
-			<div
-				class="col-start-1 col-span-1 md:col-start-2 md:col-span-8 pt-8 px-8"
-			>
-				<h2 class="text-h2">
-					First impression matters. Make it count with a landing page
-					that converts.
-				</h2>
-				<a
-					href="#"
-					class="inline-block w-fit mt-6 px-8 py-4 bg-black text-white rounded-full font-medium transition-all duration-300 hover:bg-gray-800 hover:-translate-y-1 hover:shadow-lg"
-				>
-					Book your web assesment call now
-				</a>
 			</div>
 		</div>
 	</section>
+	<SectionServices />
+	<SectionTechStack />
+	<!-- call to action -->
+	<section class="bg-white h-screen flex flex-col justify-between">
+		<div class="flex-grow flex flex-col justify-center">
+			<div class="grid grid-cols-1 md:grid-cols-10 gap-2 py-10">
+				<div
+					class="col-start-1 col-span-1 md:col-start-2 md:col-span-8 pt-8 px-8"
+				>
+					<h2 class="text-h2">
+						First impression matters. Make it count with a landing
+						page that converts.
+					</h2>
+					<a
+						href="#"
+						class="inline-block w-fit mt-6 px-8 py-4 bg-black text-white rounded-full font-medium transition-all duration-300 hover:bg-gray-800 hover:-translate-y-1 hover:shadow-lg"
+					>
+						Book your web assesment call now
+					</a>
+				</div>
+			</div>
+		</div>
+		<SectionFooter />
+	</section>
 	<!-- services section -->
 
-	<script is:inline>
-		// Trigger .reveal animation every time element enters viewport
-		const revealObserver = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add("in-view");
-					} else {
-						entry.target.classList.remove("in-view"); // reset so animation replays on re-entry
-					}
-				});
-			},
-			{ threshold: 0.15 }
-		);
+	<script>
+		import { gsap } from "gsap";
+		import { ScrollTrigger } from "gsap/ScrollTrigger";
+		import { Observer } from "gsap/Observer";
 
-		document.querySelectorAll(".reveal, .tablinks").forEach((el) => {
-			revealObserver.observe(el);
+		gsap.registerPlugin(ScrollTrigger, Observer);
+
+		// Hide elements initially via GSAP to prevent FOUC for elements not hidden by CSS
+		gsap.set("section:first-of-type img", { opacity: 0, y: 40 });
+		gsap.set("section:first-of-type p", { opacity: 0, y: 20 });
+
+		// 1. Hero Section Complex Timeline
+		function playHeroAnimation() {
+			const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+			heroTl
+				.to("section:first-of-type img", {
+					duration: 1.2,
+					y: 0,
+					opacity: 1,
+					stagger: 0.15,
+					delay: 0.1,
+				})
+				.to(
+					"section:first-of-type p",
+					{
+						duration: 0.8,
+						y: 0,
+						opacity: 1,
+						stagger: 0.1,
+					},
+					"-=0.6"
+				);
+		}
+
+		// Initial animation setup
+		const revealElements = document.querySelectorAll(
+			".reveal:not(.slide-left), .tablinks"
+		);
+		const slideLeftElements =
+			document.querySelectorAll(".reveal.slide-left");
+
+		function resetRevealAnimations(section, isHero) {
+			const reveals = section.querySelectorAll(
+				".reveal:not(.slide-left), .tablinks"
+			);
+			if (reveals.length) gsap.set(reveals, { opacity: 0, y: 40 });
+
+			const slides = section.querySelectorAll(".reveal.slide-left");
+			if (slides.length) gsap.set(slides, { opacity: 0, x: 40 });
+
+			if (isHero) {
+				gsap.set(section.querySelectorAll("img"), {
+					opacity: 0,
+					y: 40,
+				});
+				gsap.set(section.querySelectorAll("p"), { opacity: 0, y: 20 });
+			}
+		}
+
+		function playRevealAnimations(section) {
+			const reveals = section.querySelectorAll(
+				".reveal:not(.slide-left), .tablinks"
+			);
+			if (reveals.length) {
+				gsap.fromTo(
+					reveals,
+					{ opacity: 0, y: 40 },
+					{
+						opacity: 1,
+						y: 0,
+						duration: 0.8,
+						ease: "power2.out",
+						stagger: 0.1,
+						overwrite: "auto",
+					}
+				);
+			}
+			const slides = section.querySelectorAll(".reveal.slide-left");
+			if (slides.length) {
+				gsap.fromTo(
+					slides,
+					{ opacity: 0, x: 40 },
+					{
+						opacity: 1,
+						x: 0,
+						duration: 0.8,
+						ease: "power2.out",
+						stagger: 0.1,
+						overwrite: "auto",
+					}
+				);
+			}
+		}
+
+		// Full-Page Observer Slider Logic
+		let sections = document.querySelectorAll("body > section");
+		let currentIndex = 0;
+		let animating = false;
+
+		// Setup sections for absolute sliding
+		gsap.set(sections, {
+			position: "absolute",
+			top: 0,
+			left: 0,
+			width: "100%",
+			height: "100vh",
+			zIndex: (i) => sections.length - i,
+			visibility: (i) => (i === 0 ? "visible" : "hidden"), // Only show first
 		});
+
+		// Ensure body does not scroll natively
+		gsap.set(document.body, { overflow: "hidden" });
+
+		function gotoSection(index, direction) {
+			if (animating || index < 0 || index >= sections.length) return;
+			animating = true;
+
+			let currentSection = sections[currentIndex];
+			let nextSection = sections[index];
+
+			gsap.set(nextSection, { visibility: "visible", zIndex: 10 });
+			gsap.set(currentSection, { zIndex: 1 });
+
+			// Reset the incoming section's elements so they are hidden during parallax
+			resetRevealAnimations(nextSection, index === 0);
+
+			let tl = gsap.timeline({
+				defaults: { duration: 1.2, ease: "power3.inOut" },
+				onComplete: () => {
+					gsap.set(currentSection, { visibility: "hidden" });
+					animating = false;
+					if (index === 0) playHeroAnimation();
+					playRevealAnimations(nextSection);
+				},
+			});
+
+			tl.fromTo(
+				nextSection,
+				{
+					yPercent: direction === 1 ? 100 : -100,
+				},
+				{
+					yPercent: 0,
+				}
+			).to(
+				currentSection,
+				{
+					yPercent: direction === 1 ? -50 : 50,
+				},
+				0
+			);
+
+			currentIndex = index;
+		}
+
+		Observer.create({
+			type: "wheel,touch,pointer",
+			wheelSpeed: -1,
+			tolerance: 10,
+			preventDefault: false, // Let native scroll happen in scrollable divs
+			onUp: (self) => {
+				// Scrolling Down (movement Up)
+				let scrollable = self.event.target.closest(".overflow-y-auto");
+				if (scrollable) {
+					// Check if we reached the bottom of the scrollable container
+					if (
+						Math.ceil(
+							scrollable.scrollTop + scrollable.clientHeight
+						) < scrollable.scrollHeight
+					) {
+						return; // Still scrolling natively inside
+					}
+				}
+				if (!animating) gotoSection(currentIndex + 1, 1);
+			},
+			onDown: (self) => {
+				// Scrolling Up (movement Down)
+				let scrollable = self.event.target.closest(".overflow-y-auto");
+				if (scrollable) {
+					// Check if we reached the top of the scrollable container
+					if (scrollable.scrollTop > 0) {
+						return; // Still scrolling natively inside
+					}
+				}
+				if (!animating) gotoSection(currentIndex - 1, -1);
+			},
+		});
+
+		// Play hero animation on load
+		playHeroAnimation();
+		playRevealAnimations(sections[0]);
 	</script>
 </Layout>
