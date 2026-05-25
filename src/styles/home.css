@@ -5,7 +5,7 @@
 }
 
 .tablinks.muted {
-    opacity: 0.5;
+    opacity: 0.5 !important;
     transition: opacity 0.1s ease-in-out;
 }
 
