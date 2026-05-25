@@ -4,7 +4,6 @@ import "../styles/global.css";
 import "../styles/home.css";
 import SectionServices from "../components/SectionServices.astro";
 import SectionTechStack from "../components/SectionTechStack.astro";
-import SectionCoreServices from "../components/SectionCoreServices.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -28,18 +27,11 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 		</div>
 
 		<!-- Foreground Content -->
-		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-end">
+		<div
+			class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-end mt-20"
+		>
 			<div
-				class="hidden md:block col-span-1 md:col-span-2 md:col-start-2 p-4 pointer-events-auto"
-			>
-				<p>
-					Web studio specializing in UI/UX design and web development.
-					Custom website and e-commerce optimized for conversion and
-					performance.
-				</p>
-			</div>
-			<div
-				class="col-span-1 md:col-span-1 pointer-events-auto aspect-square overflow-hidden"
+				class="col-span-1 md:col-span-1 md:col-start-4 pointer-events-auto aspect-square overflow-hidden"
 			>
 				<img
 					src="/home-img/hat.webp"
@@ -52,7 +44,7 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 				class="col-span-1 md:col-span-1 md:col-start-6 pointer-events-auto aspect-square overflow-hidden"
 			>
 				<img
-					src="/home-img/hat.webp"
+					src="/home-img/shirt.webp"
 					alt="image hat online"
 					class="w-full h-full object-cover"
 				/>
@@ -62,49 +54,58 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 				class="col-span-1 md:col-span-1 pointer-events-auto aspect-square overflow-hidden"
 			>
 				<img
-					src="/home-img/hat.webp"
+					src="/home-img/wem.webp"
 					alt="image hat online"
 					class="w-full h-full object-cover"
 				/>
 			</div>
 		</div>
 		<!-- row 2 -->
-		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-end">
+		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-start">
 			<div
-				class="col-span-1 md:col-span-3 md:col-start-2 p-4 pointer-events-auto @container"
+				class="col-span-4 md:col-span-4 md:col-start-2 p-4 pointer-events-auto @container"
 			>
 				<!-- The text size uses Container Query units (cqw) to scale relative to the parent div's width -->
 				<!-- 25cqw means 25% of the container's width. You can adjust this number to fit perfectly -->
 				<p>Introducing</p>
 				<h3
-					class="panchang-medium uppercase text-[22cqw] md:text-[22cqw] leading-none whitespace-nowrap relative z-20"
-				>
-					Studio
-				</h3>
-			</div>
-			<div
-				class="col-span-1 md:col-span-1 md:col-start-5 pointer-events-auto aspect-square overflow-hidden"
-			>
-				<img
-					src="/home-img/hat.webp"
-					alt="image hat online"
-					class="w-full h-full object-cover"
-				/>
-			</div>
-		</div>
-		<!-- row 3 -->
-		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-end">
-			<div
-				class="col-span-4 md:col-span-6 md:col-start-2 p-4 pointer-events-auto @container"
-			>
-				<!-- The text size uses Container Query units (cqw) to scale relative to the parent div's width -->
-				<!-- 25cqw means 25% of the container's width. You can adjust this number to fit perfectly -->
-				<h3
-					class="panchang-medium uppercase text-[18cqw] leading-none whitespace-nowrap"
+					class="reveal panchang-medium uppercase text-[18cqw] md:text-[22cqw] leading-none whitespace-nowrap relative z-20"
 				>
 					Tempa
 				</h3>
 			</div>
+			<div
+				class="hidden md:block col-span-1 md:col-span-2 md:col-start-2 p-4 pointer-events-auto text-xl"
+			>
+				<p>
+					Web studio specializing in UI/UX design and web development.
+					Custom website and e-commerce optimized for conversion and
+					performance.
+				</p>
+			</div>
+			<div
+				class="col-span-1 col-start-2 md:col-span-1 md:col-start-4 pointer-events-auto aspect-square overflow-hidden"
+			>
+				<img
+					src="/home-img/socks.webp"
+					alt="image hat online"
+					class="w-full h-full object-cover"
+				/>
+			</div>
+			<div
+				class="col-span-4 col-start-3 md:col-span-3 md:col-start-5 p-4 pointer-events-auto @container"
+			>
+				<!-- The text size uses Container Query units (cqw) to scale relative to the parent div's width -->
+				<!-- 25cqw means 25% of the container's width. You can adjust this number to fit perfectly -->
+				<h3
+					class="reveal panchang-regular uppercase text-[18cqw] leading-none whitespace-nowrap"
+				>
+					Studio
+				</h3>
+			</div>
+		</div>
+		<!-- row 3 -->
+		<div class="relative z-10 grid grid-cols-4 md:grid-cols-8 items-start">
 			<div
 				class="col-span-1 col-start-2 md:col-span-1 md:col-start-5 pointer-events-auto aspect-square overflow-hidden"
 			>
@@ -124,7 +125,6 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 		</div>
 	</section>
 	<SectionServices />
-	<SectionCoreServices />
 	<SectionTechStack />
 	<!-- call to action -->
 	<section class="min-h-[800px] flex flex-col justify-center">
@@ -147,23 +147,71 @@ import SectionCoreServices from "../components/SectionCoreServices.astro";
 	</section>
 	<!-- services section -->
 
-	<script is:inline>
-		// Trigger .reveal animation every time element enters viewport
-		const revealObserver = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add("in-view");
-					} else {
-						entry.target.classList.remove("in-view"); // reset so animation replays on re-entry
-					}
-				});
-			},
-			{ threshold: 0.15 }
-		);
+	<script>
+		import { gsap } from "gsap";
+		import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-		document.querySelectorAll(".reveal, .tablinks").forEach((el) => {
-			revealObserver.observe(el);
+		gsap.registerPlugin(ScrollTrigger);
+
+		// 1. Hero Section Complex Timeline
+		const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+		// Hide elements initially via GSAP to prevent FOUC for elements not hidden by CSS
+		gsap.set("section:first-of-type img", { opacity: 0, y: 40 });
+		gsap.set("section:first-of-type p", { opacity: 0, y: 20 });
+
+		heroTl
+			.to("section:first-of-type img", {
+				duration: 1.2,
+				y: 0,
+				opacity: 1,
+				stagger: 0.15,
+				delay: 0.1,
+			})
+			.to(
+				"section:first-of-type p",
+				{
+					duration: 0.8,
+					y: 0,
+					opacity: 1,
+					stagger: 0.1,
+				},
+				"-=0.6"
+			);
+
+		// 2. Global ScrollTrigger for .reveal and .tablinks
+		const revealElements = document.querySelectorAll(
+			".reveal:not(.slide-left), .tablinks"
+		);
+		revealElements.forEach((el) => {
+			gsap.to(el, {
+				scrollTrigger: {
+					trigger: el,
+					start: "top 85%",
+					toggleActions: "play none none reverse", // Play on enter, reverse on leave
+				},
+				opacity: 1,
+				y: 0,
+				duration: 0.6,
+				ease: "power2.out",
+			});
+		});
+
+		// 3. ScrollTrigger for .reveal.slide-left
+		const slideLeftElements =
+			document.querySelectorAll(".reveal.slide-left");
+		slideLeftElements.forEach((el) => {
+			gsap.to(el, {
+				scrollTrigger: {
+					trigger: el,
+					start: "top 85%",
+					toggleActions: "play none none reverse",
+				},
+				opacity: 1,
+				x: 0,
+				duration: 0.6,
+				ease: "power2.out",
+			});
 		});
 	</script>
 </Layout>
