@@ -314,152 +314,173 @@ import SectionFooter from "../components/SectionFooter.astro";
 			}
 		}
 
-		// Full-Page Observer Slider Logic
+		// Full-Page Observer Slider Logic (Desktop Only) & Native Scroll (Mobile)
 		let sections = document.querySelectorAll("body > section");
-		let currentIndex = 0;
-		let animating = false;
+		let mm = gsap.matchMedia();
 
-		// Setup sections for absolute sliding
-		gsap.set(sections, {
-			position: "absolute",
-			top: 0,
-			left: 0,
-			width: "100%",
-			height: "100vh",
-			zIndex: (i) => sections.length - i,
-			visibility: (i) => (i === 0 ? "visible" : "hidden"), // Only show first
-		});
+		mm.add("(min-width: 768px)", () => {
+			let currentIndex = 0;
+			let animating = false;
+			let boundaryHitTime = 0;
 
-		// Ensure body does not scroll natively
-		gsap.set(document.body, { overflow: "hidden" });
-
-		function gotoSection(index, direction) {
-			if (animating || index < 0 || index >= sections.length) return;
-			animating = true;
-
-			let currentSection = sections[currentIndex];
-			let nextSection = sections[index];
-
-			gsap.set(nextSection, { visibility: "visible", zIndex: 10 });
-			gsap.set(currentSection, { zIndex: 1 });
-
-			// Reset the incoming section's elements so they are hidden during parallax ini untuk ganti kecepatan slide
-			resetRevealAnimations(nextSection, index === 0);
-
-			let tl = gsap.timeline({
-				defaults: { duration: 0.8, ease: "power3.inOut" },
-				onComplete: () => {
-					gsap.set(currentSection, { visibility: "hidden" });
-					if (index === 0) playHeroAnimation();
-					playRevealAnimations(nextSection);
-
-					// Add a cooldown to prevent trackpad momentum from jumping multiple sections
-					setTimeout(() => {
-						animating = false;
-					}, 500);
-				},
+			// Setup sections for absolute sliding
+			gsap.set(sections, {
+				position: "absolute",
+				top: 0,
+				left: 0,
+				width: "100%",
+				height: "100vh",
+				zIndex: (i) => sections.length - i,
+				visibility: (i) => (i === 0 ? "visible" : "hidden"), // Only show first
 			});
 
-			tl.fromTo(
-				nextSection,
-				{
-					yPercent: direction === 1 ? 100 : -100,
-				},
-				{
-					yPercent: 0,
-				}
-			).to(
-				currentSection,
-				{
-					yPercent: direction === 1 ? -50 : 50,
-				},
-				0
-			);
+			// Ensure body does not scroll natively
+			gsap.set(document.body, { overflow: "hidden" });
 
-			currentIndex = index;
-		}
+			function gotoSection(index, direction) {
+				if (animating || index < 0 || index >= sections.length) return;
+				animating = true;
 
-		// Handle Header Navigation Links
-		document.querySelectorAll(".nav-link").forEach((link) => {
-			link.addEventListener("click", (e) => {
+				let currentSection = sections[currentIndex];
+				let nextSection = sections[index];
+
+				gsap.set(nextSection, { visibility: "visible", zIndex: 10 });
+				gsap.set(currentSection, { zIndex: 1 });
+
+				resetRevealAnimations(nextSection, index === 0);
+
+				let tl = gsap.timeline({
+					defaults: { duration: 0.8, ease: "power3.inOut" },
+					onComplete: () => {
+						gsap.set(currentSection, { visibility: "hidden" });
+						if (index === 0) playHeroAnimation();
+						playRevealAnimations(nextSection);
+
+						setTimeout(() => { animating = false; }, 500);
+					},
+				});
+
+				tl.fromTo(nextSection, { yPercent: direction === 1 ? 100 : -100 }, { yPercent: 0 })
+				  .to(currentSection, { yPercent: direction === 1 ? -50 : 50 }, 0);
+
+				currentIndex = index;
+			}
+
+			// Handle Header Navigation Links
+			const navLinks = document.querySelectorAll(".nav-link");
+			const onNavClick = (e) => {
 				e.preventDefault();
-				const targetIndex = parseInt(
-					link.getAttribute("data-target-index")
-				);
-				if (
-					!isNaN(targetIndex) &&
-					targetIndex !== currentIndex &&
-					!animating &&
-					targetIndex >= 0 &&
-					targetIndex < sections.length
-				) {
+				const targetIndex = parseInt(e.currentTarget.getAttribute("data-target-index"));
+				if (!isNaN(targetIndex) && targetIndex !== currentIndex && !animating && targetIndex >= 0 && targetIndex < sections.length) {
 					const direction = targetIndex > currentIndex ? 1 : -1;
 					gotoSection(targetIndex, direction);
 				}
+			};
+			navLinks.forEach(link => link.addEventListener("click", onNavClick));
+
+			const observer = Observer.create({
+				type: "wheel,touch,pointer",
+				wheelSpeed: -1,
+				tolerance: 10,
+				preventDefault: false, // Let native scroll happen in scrollable divs
+				onUp: (self) => {
+					let scrollable = self.event.target.closest(".overflow-y-auto");
+					if (scrollable) {
+						if (Math.ceil(scrollable.scrollTop + scrollable.clientHeight) < scrollable.scrollHeight) {
+							boundaryHitTime = 0; return;
+						}
+						if (boundaryHitTime === 0) { boundaryHitTime = Date.now(); return; }
+						if (Date.now() - boundaryHitTime < 600) return;
+					}
+					if (!animating) { gotoSection(currentIndex + 1, 1); boundaryHitTime = 0; }
+				},
+				onDown: (self) => {
+					let scrollable = self.event.target.closest(".overflow-y-auto");
+					if (scrollable) {
+						if (scrollable.scrollTop > 0) { boundaryHitTime = 0; return; }
+						if (boundaryHitTime === 0) { boundaryHitTime = Date.now(); return; }
+						if (Date.now() - boundaryHitTime < 600) return;
+					}
+					if (!animating) { gotoSection(currentIndex - 1, -1); boundaryHitTime = 0; }
+				},
 			});
+
+			playHeroAnimation();
+			playRevealAnimations(sections[0]);
+
+			return () => {
+				// Cleanup for mobile
+				observer.kill();
+				navLinks.forEach(link => link.removeEventListener("click", onNavClick));
+				gsap.set(sections, { clearProps: "all" });
+				gsap.set(document.body, { clearProps: "overflow" });
+			};
 		});
 
-		let boundaryHitTime = 0;
+		mm.add("(max-width: 767px)", () => {
+			gsap.set(document.body, { overflow: "auto" });
+			gsap.set(sections, { 
+				position: "relative",
+				height: "auto",
+				visibility: "visible",
+				zIndex: 1
+			});
+			gsap.set(sections[0], { height: "100vh" });
 
-		Observer.create({
-			type: "wheel,touch,pointer",
-			wheelSpeed: -1,
-			tolerance: 10,
-			preventDefault: false, // Let native scroll happen in scrollable divs
-			onUp: (self) => {
-				// Scrolling Down (movement Up)
-				let scrollable = self.event.target.closest(".overflow-y-auto");
-				if (scrollable) {
-					// Check if we reached the bottom of the scrollable container
-					if (
-						Math.ceil(
-							scrollable.scrollTop + scrollable.clientHeight
-						) < scrollable.scrollHeight
-					) {
-						boundaryHitTime = 0;
-						return; // Still scrolling natively inside
-					}
-					// Reached bottom - require a fresh scroll intention
-					if (boundaryHitTime === 0) {
-						boundaryHitTime = Date.now();
-						return;
-					}
-					if (Date.now() - boundaryHitTime < 600) {
-						return; // Ignore residual momentum
+			// Pin the Hero section for parallax effect
+			const heroPin = ScrollTrigger.create({
+				trigger: sections[0],
+				start: "top top",
+				end: "bottom top",
+				pin: true,
+				pinSpacing: false, // Allows Section 2 to slide over it natively
+				snap: {
+					snapTo: [0, 1], 
+					duration: 0.5,
+				}
+			});
+
+			// Setup ScrollTriggers for reveal animations
+			const triggers = [];
+			sections.forEach((section, index) => {
+				if (index > 0) {
+					resetRevealAnimations(section, false);
+					triggers.push(ScrollTrigger.create({
+						trigger: section,
+						start: "top 75%",
+						onEnter: () => playRevealAnimations(section),
+					}));
+				}
+			});
+
+			playHeroAnimation();
+			playRevealAnimations(sections[0]);
+
+			const navLinks = document.querySelectorAll(".nav-link");
+			const onNavClick = (e) => {
+				e.preventDefault();
+				const targetIndex = parseInt(e.currentTarget.getAttribute("data-target-index"));
+				if (!isNaN(targetIndex) && targetIndex >= 0 && targetIndex < sections.length) {
+					if (targetIndex === 0) {
+						window.scrollTo({top: 0, behavior: 'smooth'});
+					} else {
+						const target = sections[targetIndex];
+						// Hero is 100vh pinned, Section 2 is at offsetTop (but visually moves up over it)
+						// So Section 2's native offset is 100vh.
+						const offset = targetIndex === 1 ? window.innerHeight : target.offsetTop;
+						window.scrollTo({top: offset, behavior: 'smooth'});
 					}
 				}
-				if (!animating) {
-					gotoSection(currentIndex + 1, 1);
-					boundaryHitTime = 0;
-				}
-			},
-			onDown: (self) => {
-				// Scrolling Up (movement Down)
-				let scrollable = self.event.target.closest(".overflow-y-auto");
-				if (scrollable) {
-					// Check if we reached the top of the scrollable container
-					if (scrollable.scrollTop > 0) {
-						boundaryHitTime = 0;
-						return; // Still scrolling natively inside
-					}
-					// Reached top - require a fresh scroll intention
-					if (boundaryHitTime === 0) {
-						boundaryHitTime = Date.now();
-						return;
-					}
-					if (Date.now() - boundaryHitTime < 600) {
-						return; // Ignore residual momentum
-					}
-				}
-				if (!animating) {
-					gotoSection(currentIndex - 1, -1);
-					boundaryHitTime = 0;
-				}
-			},
+			};
+			navLinks.forEach(link => link.addEventListener("click", onNavClick));
+
+			return () => {
+				// Cleanup for desktop
+				heroPin.kill();
+				triggers.forEach(t => t.kill());
+				navLinks.forEach(link => link.removeEventListener("click", onNavClick));
+				gsap.set(sections, { clearProps: "all" });
+			};
 		});
-
-		// Play hero animation on load
-		playHeroAnimation();
-		playRevealAnimations(sections[0]);
 	</script>
 </Layout>
