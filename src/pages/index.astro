@@ -427,19 +427,6 @@ import SectionFooter from "../components/SectionFooter.astro";
 			});
 			gsap.set(sections[0], { height: "100vh" });
 
-			// Pin the Hero section for parallax effect
-			const heroPin = ScrollTrigger.create({
-				trigger: sections[0],
-				start: "top top",
-				end: "bottom top",
-				pin: true,
-				pinSpacing: false, // Allows Section 2 to slide over it natively
-				snap: {
-					snapTo: [0, 1], 
-					duration: 0.5,
-				}
-			});
-
 			// Setup ScrollTriggers for reveal animations
 			const triggers = [];
 			sections.forEach((section, index) => {
@@ -461,22 +448,14 @@ import SectionFooter from "../components/SectionFooter.astro";
 				e.preventDefault();
 				const targetIndex = parseInt(e.currentTarget.getAttribute("data-target-index"));
 				if (!isNaN(targetIndex) && targetIndex >= 0 && targetIndex < sections.length) {
-					if (targetIndex === 0) {
-						window.scrollTo({top: 0, behavior: 'smooth'});
-					} else {
-						const target = sections[targetIndex];
-						// Hero is 100vh pinned, Section 2 is at offsetTop (but visually moves up over it)
-						// So Section 2's native offset is 100vh.
-						const offset = targetIndex === 1 ? window.innerHeight : target.offsetTop;
-						window.scrollTo({top: offset, behavior: 'smooth'});
-					}
+					const target = sections[targetIndex];
+					window.scrollTo({top: target.offsetTop, behavior: 'smooth'});
 				}
 			};
 			navLinks.forEach(link => link.addEventListener("click", onNavClick));
 
 			return () => {
 				// Cleanup for desktop
-				heroPin.kill();
 				triggers.forEach(t => t.kill());
 				navLinks.forEach(link => link.removeEventListener("click", onNavClick));
 				gsap.set(sections, { clearProps: "all" });
